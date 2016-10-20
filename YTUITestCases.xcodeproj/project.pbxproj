@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D918AAD01DB9074800C83AC3 /* TBRTestDataSouce.m in Sources */ = {isa = PBXBuildFile; fileRef = D918AACF1DB9074800C83AC3 /* TBRTestDataSouce.m */; };
 		D96BC9B21DB8F34A001B4497 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D96BC9B11DB8F34A001B4497 /* main.m */; };
 		D96BC9B51DB8F34A001B4497 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D96BC9B41DB8F34A001B4497 /* AppDelegate.m */; };
 		D96BC9B81DB8F34A001B4497 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D96BC9B71DB8F34A001B4497 /* ViewController.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D918AACE1DB9074800C83AC3 /* TBRTestDataSouce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBRTestDataSouce.h; sourceTree = "<group>"; };
+		D918AACF1DB9074800C83AC3 /* TBRTestDataSouce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBRTestDataSouce.m; sourceTree = "<group>"; };
 		D96BC9AD1DB8F34A001B4497 /* YTUITestCases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YTUITestCases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D96BC9B11DB8F34A001B4497 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D96BC9B31DB8F34A001B4497 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 			children = (
 				D96BC9C81DB8F369001B4497 /* UIViewController+TestCase.h */,
 				D96BC9C91DB8F369001B4497 /* UIViewController+TestCase.m */,
+				D918AACE1DB9074800C83AC3 /* TBRTestDataSouce.h */,
+				D918AACF1DB9074800C83AC3 /* TBRTestDataSouce.m */,
 			);
 			path = YTUITestCases;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			files = (
 				D96BC9B81DB8F34A001B4497 /* ViewController.m in Sources */,
 				D96BC9B51DB8F34A001B4497 /* AppDelegate.m in Sources */,
+				D918AAD01DB9074800C83AC3 /* TBRTestDataSouce.m in Sources */,
 				D96BC9CA1DB8F369001B4497 /* UIViewController+TestCase.m in Sources */,
 				D96BC9B21DB8F34A001B4497 /* main.m in Sources */,
 				D96BC9CD1DB8F5BA001B4497 /* YTTableViewController.m in Sources */,
@@ -329,6 +335,7 @@
 				D96BC9C61DB8F34A001B4497 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
