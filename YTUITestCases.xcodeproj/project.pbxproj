@@ -13,6 +13,8 @@
 		D96BC9BB1DB8F34A001B4497 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96BC9B91DB8F34A001B4497 /* Main.storyboard */; };
 		D96BC9BD1DB8F34A001B4497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D96BC9BC1DB8F34A001B4497 /* Assets.xcassets */; };
 		D96BC9C01DB8F34A001B4497 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D96BC9BE1DB8F34A001B4497 /* LaunchScreen.storyboard */; };
+		D96BC9CA1DB8F369001B4497 /* UIViewController+TestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = D96BC9C91DB8F369001B4497 /* UIViewController+TestCase.m */; };
+		D96BC9CD1DB8F5BA001B4497 /* YTTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D96BC9CC1DB8F5BA001B4497 /* YTTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		D96BC9BC1DB8F34A001B4497 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D96BC9BF1DB8F34A001B4497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D96BC9C11DB8F34A001B4497 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D96BC9C81DB8F369001B4497 /* UIViewController+TestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TestCase.h"; sourceTree = "<group>"; };
+		D96BC9C91DB8F369001B4497 /* UIViewController+TestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TestCase.m"; sourceTree = "<group>"; };
+		D96BC9CB1DB8F5BA001B4497 /* YTTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTTableViewController.h; sourceTree = "<group>"; };
+		D96BC9CC1DB8F5BA001B4497 /* YTTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +64,11 @@
 		D96BC9AF1DB8F34A001B4497 /* YTUITestCases */ = {
 			isa = PBXGroup;
 			children = (
+				D96BC9C71DB8F369001B4497 /* YTUITestCases */,
 				D96BC9B31DB8F34A001B4497 /* AppDelegate.h */,
 				D96BC9B41DB8F34A001B4497 /* AppDelegate.m */,
+				D96BC9CB1DB8F5BA001B4497 /* YTTableViewController.h */,
+				D96BC9CC1DB8F5BA001B4497 /* YTTableViewController.m */,
 				D96BC9B61DB8F34A001B4497 /* ViewController.h */,
 				D96BC9B71DB8F34A001B4497 /* ViewController.m */,
 				D96BC9B91DB8F34A001B4497 /* Main.storyboard */,
@@ -77,6 +86,15 @@
 				D96BC9B11DB8F34A001B4497 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D96BC9C71DB8F369001B4497 /* YTUITestCases */ = {
+			isa = PBXGroup;
+			children = (
+				D96BC9C81DB8F369001B4497 /* UIViewController+TestCase.h */,
+				D96BC9C91DB8F369001B4497 /* UIViewController+TestCase.m */,
+			);
+			path = YTUITestCases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +170,9 @@
 			files = (
 				D96BC9B81DB8F34A001B4497 /* ViewController.m in Sources */,
 				D96BC9B51DB8F34A001B4497 /* AppDelegate.m in Sources */,
+				D96BC9CA1DB8F369001B4497 /* UIViewController+TestCase.m in Sources */,
 				D96BC9B21DB8F34A001B4497 /* main.m in Sources */,
+				D96BC9CD1DB8F5BA001B4497 /* YTTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

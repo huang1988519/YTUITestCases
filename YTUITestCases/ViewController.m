@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "UIViewController+TestCase.h"
 
-@interface ViewController ()
+@interface ViewController ()<UIViewControllerTestCaseProtocol>
 
 @end
 
@@ -19,11 +20,38 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)changeBg1 {
+    self.view.backgroundColor = [UIColor redColor];
 }
 
+-(void)changeBg2 {
+    self.view.backgroundColor = [UIColor blueColor];
+}
+-(void)changeBg3 {
+    self.view.backgroundColor = [UIColor yellowColor];
+}
+-(void)changeBg4 {
+    self.view.backgroundColor = [UIColor greenColor];
+}
+-(void)changeBg5 {
+    self.view.backgroundColor = [UIColor darkGrayColor];
+}
+-(void)changeBg6 {
+    self.view.backgroundColor = [UIColor whiteColor];
+}
+-(void)changeBg7 {
+    self.view.backgroundColor = [UIColor brownColor];
+}
+
+-(NSArray<NSInvocation *> *)testCases {
+    NSMutableArray<NSInvocation *> * methods = [NSMutableArray arrayWithCapacity:7];
+    for (int i = 1; i<=7;i++) {
+        NSString * methodName = [NSString stringWithFormat:@"changeBg%d",i];
+        
+        NSInvocation * invocation = [self invocationForSelector:NSSelectorFromString(methodName) args:nil];
+        [methods addObject:invocation];
+    }
+    return methods;
+}
 
 @end
