@@ -91,10 +91,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "YTUITestCases/*.{h,m}"
+  s.source_files  = "YTUITestCases/YTUITestCases/*.{h,m}"
   # s.exclude_files = "Classes/Exclude"
 
-  s.public_header_files = "YTUITestCases/*.h"
+  s.public_header_files = "YTUITestCases/YTUITestCases/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
