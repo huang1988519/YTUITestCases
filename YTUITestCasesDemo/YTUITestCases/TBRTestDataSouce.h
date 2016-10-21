@@ -11,10 +11,12 @@
 @interface TBRTestDataSouce : NSObject <UITableViewDelegate,UITableViewDataSource>
 {
     UITableView * _tableView;
-    NSArray * _bgColors;
+    NSArray     * _bgColors;
 }
-@property(nonatomic, copy) NSUInteger (^numberOfTableView)();
-@property(nonatomic, copy) NSInvocation * (^nameForIndex)(NSUInteger index);
+@property(nonatomic, copy) NSUInteger (^numberOfTestCases)();
+@property(nonatomic, copy) NSUInteger (^numberOfAutoCases)();
+
+@property(nonatomic, copy) NSInvocation * (^nameForIndex)(NSIndexPath * indexPath);
 
 
 +(instancetype)shareInstance;

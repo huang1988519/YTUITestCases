@@ -3,7 +3,7 @@
 //  taobaoreader
 //
 //  Created by huanwh on 2016/10/17.
-//  Copyright © 2016年 AlibabaLiterature. All rights reserved.
+//  Copyright © 2016年 hwh. All rights reserved.
 //
 
 #import "UIViewController+TestCase.h"
@@ -27,7 +27,7 @@ static NSString * kTBRHavePerformedArrayKey = @"kTBRPreHavePerformedArrayKey";
     dispatch_once(&onceToken, ^{
         [self swizzleOriginSEL:@selector(viewDidLoad) swizzleSEL:@selector(tbr_test_viewDidLoad)];
         [self swizzleOriginSEL:@selector(viewWillAppear:) swizzleSEL:@selector(tbr_test_viewWillAppear:)];
-        [self swizzleOriginSEL:@selector(viewWillDisappear:) swizzleSEL:@selector(tbr_test_viewWillDisappear:)];
+//        [self swizzleOriginSEL:@selector(viewWillDisappear:) swizzleSEL:@selector(tbr_test_viewWillDisappear:)];
     });
 }
 
@@ -57,13 +57,13 @@ static NSString * kTBRHavePerformedArrayKey = @"kTBRPreHavePerformedArrayKey";
 
 -(void)tbr_test_viewDidLoad {
     [self tbr_test_viewDidLoad];
-    NSLog(@"Caution!!  淘宝阅读 ：替换 viewDidLoad: 方法");
+    NSLog(@"[YT Verbose] Caution!!  替换 viewDidLoad: 方法");
     
     self.performedList = [NSMutableArray array];
     
     if ([self conformsToProtocol:@protocol(UIViewControllerTestCaseProtocol)]) {
         
-        NSString * preCasesName = [self performMethodForKey:@"preTestCases"];
+        NSString * preCasesName = [self performMethodForKey:@"autoTestCases"];
         NSString * casesName    = [self performMethodForKey:@"testCases"];
         
 #pragma clang diagnostic push
@@ -93,20 +93,27 @@ static NSString * kTBRHavePerformedArrayKey = @"kTBRPreHavePerformedArrayKey";
 
 -(void)tbr_test_viewWillAppear:(BOOL)animated {
     [self tbr_test_viewWillAppear:animated];
-
-    [self reloadTable];
-
+    
+    if (![self isKindOfClass:[UIAlertController class]]) {
+        [self reloadTable];
+    }
+    
+    /* 去除 摇晃 顺序执行
     if ([self conformsToProtocol:@protocol(UIViewControllerTestCaseProtocol)]) {
         [self startObserveMotion];
     }
+     */
 }
 
+/// 暂时屏蔽，不执行
 -(void)tbr_test_viewWillDisappear:(BOOL)animated {
     [self tbr_test_viewWillDisappear:animated];
     
+    /* 去除 摇晃 顺序执行
     if ([self conformsToProtocol:@protocol(UIViewControllerTestCaseProtocol)]) {
         [self endObserveMotion];
     }
+     */
 }
 
 #pragma mark - 执行
@@ -114,12 +121,7 @@ static NSString * kTBRHavePerformedArrayKey = @"kTBRPreHavePerformedArrayKey";
 -(void)performPreSelectors {
     for (NSInvocation * invocation in self.preSelectors) {
         [invocation invoke];
-        
-        NSString * seletorName = NSStringFromSelector(invocation.selector);
-        [self.performedList addObject:seletorName];
     }
-    
-    [self.preSelectors removeAllObjects];
     
     NSLog(@"\n\n->预执行执行完成\n->\n%@\n\n",self.performedList);
 }
@@ -150,8 +152,8 @@ static NSString * kTBRHavePerformedArrayKey = @"kTBRPreHavePerformedArrayKey";
     return nil;
 }
 
-
-#pragma mark - 添加摇晃手势
+/*
+#pragma mark - 添加摇晃手势  此版本删除
 
 -(void)startObserveMotion {
 #if DEBUG
@@ -171,7 +173,7 @@ static NSString * kTBRHavePerformedArrayKey = @"kTBRPreHavePerformedArrayKey";
     
     [self.view resignFirstResponder];
 }
-
+*/
 -(NSInvocation *)invocationForSelector:(SEL)selector args:(id)first, ... {
     NSMutableArray * params = [NSMutableArray array];
     
@@ -233,6 +235,7 @@ static NSString * kTBRHavePerformedArrayKey = @"kTBRPreHavePerformedArrayKey";
 }
 
 
+/*
 #pragma mark - 摇晃执行事件
 
 -(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
@@ -260,17 +263,22 @@ static NSString * kTBRHavePerformedArrayKey = @"kTBRPreHavePerformedArrayKey";
     }
 #endif
 }
-
+*/
 
 #pragma mark - UITableView 
 -(void)reloadTable {
     
-    [[TBRTestDataSouce shareInstance] setNumberOfTableView:^NSUInteger{
+    [[TBRTestDataSouce shareInstance] setNumberOfTestCases:^NSUInteger{
         return self.selectors.count;
     }];
-    
-    [[TBRTestDataSouce shareInstance] setNameForIndex:^NSInvocation *(NSUInteger index) {
-        return self.selectors[index];
+    [[TBRTestDataSouce shareInstance] setNumberOfAutoCases:^NSUInteger{
+        return self.preSelectors.count;
+    }];
+    [[TBRTestDataSouce shareInstance] setNameForIndex:^NSInvocation *(NSIndexPath * indexPath) {
+        if (indexPath.section == 0) {
+            return self.preSelectors[indexPath.row];
+        }
+        return self.selectors[indexPath.row];
     }];
     
     [[TBRTestDataSouce shareInstance] reloadData];

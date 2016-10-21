@@ -53,7 +53,7 @@ static int kTableViewTag = 555;
         return ;
     }
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, 150, 180) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, 150, 180) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.alpha = 0.8;
@@ -84,7 +84,7 @@ static int kTableViewTag = 555;
 
 #pragma mark - UITableViewDelegate & Datasource
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSInvocation * invotion = self.nameForIndex(indexPath.row);
+    NSInvocation * invotion = self.nameForIndex(indexPath);
     [invotion invoke];
 }
 
@@ -104,7 +104,7 @@ static int kTableViewTag = 555;
     cell.textLabel.text = @"null";
     
     if (self.nameForIndex) {
-        NSInvocation * invotion = self.nameForIndex(indexPath.row);
+        NSInvocation * invotion = self.nameForIndex(indexPath);
         
         NSString *name = NSStringFromSelector(invotion.selector);
         cell.textLabel.text = name;
@@ -113,12 +113,41 @@ static int kTableViewTag = 555;
     return cell;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    _tableView.hidden = !self.numberOfTableView || self.numberOfTableView() <= 0;
-    
-    if (self.numberOfTableView && self.numberOfTableView() > 0) {
-        return self.numberOfTableView();
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Auto Cases";
     }
+    return @"Test Cases";
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+static bool emptyOfFirst = NO, emptyOfSecond = NO;
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    tableView.hidden = NO;
+        
+    if (section == 0) {
+        emptyOfFirst = NO;
+        
+        if (self.numberOfAutoCases && self.numberOfAutoCases() > 0) {
+            return self.numberOfAutoCases();
+        }
+        
+        emptyOfFirst = YES;
+    }
+    else if(section == 1) {
+        emptyOfSecond = NO;
+        
+        if (self.numberOfTestCases && self.numberOfTestCases() > 0) {
+            return self.numberOfTestCases();
+        }
+        emptyOfSecond = YES;
+    }
+    
+    tableView.hidden = emptyOfFirst && emptyOfSecond;
     
     return 0;
 }

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D96BC9AC1DB8F34A001B4497"
-               BuildableName = "YTUITestCases.app"
-               BlueprintName = "YTUITestCases"
-               ReferencedContainer = "container:YTUITestCases.xcodeproj">
+               BuildableName = "YTUITestCasesDemo.app"
+               BlueprintName = "YTUITestCasesDemo"
+               ReferencedContainer = "container:YTUITestCasesDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D96BC9AC1DB8F34A001B4497"
-            BuildableName = "YTUITestCases.app"
-            BlueprintName = "YTUITestCases"
-            ReferencedContainer = "container:YTUITestCases.xcodeproj">
+            BuildableName = "YTUITestCasesDemo.app"
+            BlueprintName = "YTUITestCasesDemo"
+            ReferencedContainer = "container:YTUITestCasesDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D96BC9AC1DB8F34A001B4497"
-            BuildableName = "YTUITestCases.app"
-            BlueprintName = "YTUITestCases"
-            ReferencedContainer = "container:YTUITestCases.xcodeproj">
+            BuildableName = "YTUITestCasesDemo.app"
+            BlueprintName = "YTUITestCasesDemo"
+            ReferencedContainer = "container:YTUITestCasesDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D96BC9AC1DB8F34A001B4497"
-            BuildableName = "YTUITestCases.app"
-            BlueprintName = "YTUITestCases"
-            ReferencedContainer = "container:YTUITestCases.xcodeproj">
+            BuildableName = "YTUITestCasesDemo.app"
+            BlueprintName = "YTUITestCasesDemo"
+            ReferencedContainer = "container:YTUITestCasesDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
