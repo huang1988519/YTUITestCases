@@ -182,15 +182,14 @@ static NSString * kTBRHavePerformedArrayKey = @"kTBRPreHavePerformedArrayKey";
     
     if (first) {
         [params addObject:first];
+        
+        id arg = nil;
+        while ((arg = va_arg(list, id))) {
+            [params addObject:arg];
+        }
+        
+        va_end(list);
     }
-    
-    id arg = nil;
-    while ((arg = va_arg(list, id))) {
-        [params addObject:arg];
-    }
-
-    va_end(list);
-    
     
     NSMethodSignature * signature = [[self class] instanceMethodSignatureForSelector:selector];
     NSInvocation * invocation = [NSInvocation invocationWithMethodSignature:signature];
